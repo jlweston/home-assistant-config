@@ -1,0 +1,21 @@
+everyone:
+  name: Everyone
+  entities:
+    - person.jamie
+    - person.karen
+landing_switches:
+  name: Landing Switches
+  entities:
+    - switch.landing_switch
+    - switch.lounge_switch_right
+jamies_tracking_devices:
+  name: Jamie's tracking devices
+  entities:
+    - device_tracker.jamie_bt_mobile_living_room
+    - device_tracker.jamie_bt_watch_living_room
+    - device_tracker.c0_ee_fb_e1_dc_b8
+karens_tracking_devices:
+  name: Karen's tracking devices
+  entities:
+    - device_tracker.karen_bt_mobile_living_room
+    - device_tracker.74_b5_87_e8_0e_f1

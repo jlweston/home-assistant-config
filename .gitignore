@@ -1,0 +1,20 @@
+# Main folders to ignore
+.vscode
+.storage
+.cloud
+.google.token
+custom_components
+deps
+esphome
+tts
+www
+
+# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+
+# other files to ignore
+home-assistant_v2.db
+home-assistant.log
+.HA_VERSION

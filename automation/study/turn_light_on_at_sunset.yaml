@@ -1,0 +1,20 @@
+alias: Turn Lights On at Sunset (if home)
+description: ''
+trigger:
+- below: '4'
+  entity_id: sun.sun
+  platform: numeric_state
+  value_template: '{{ state_attr(''sun.sun'', ''elevation'') }}'
+condition:
+- condition: state
+  entity_id: person.jamie
+  state: home
+- condition: state
+  entity_id: input_boolean.bedtime
+  state: 'off'
+action:
+- brightness_pct: 60
+  device_id: a0e55e8de34448308838381db302195d
+  domain: light
+  entity_id: light.study_light #study light
+  type: turn_on

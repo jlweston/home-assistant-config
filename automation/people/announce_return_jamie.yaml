@@ -1,0 +1,19 @@
+alias: Announce return (Jamie)
+description: 'Announces Jamie''s return if the input boolean was previously set.'
+trigger:
+- entity_id: person.jamie
+  event: enter
+  platform: zone
+  zone: zone.home
+condition:
+- condition: state
+  entity_id: input_boolean.announce_return_jamie
+  state: 'on'
+action:
+- service: mqtt.publish
+  data:
+    topic: "cmnd/tasmota_C082EE/backlog"
+    payload: "RfSync 8700; RfLow 270; RfHigh 840; RfCode #B1E2C2;"
+- data: {}
+  entity_id: input_boolean.announce_return_jamie
+  service: input_boolean.turn_off

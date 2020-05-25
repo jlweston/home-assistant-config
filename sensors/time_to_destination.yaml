@@ -1,0 +1,6 @@
+platform: waze_travel_time
+name: "Me to destination"
+origin: device_tracker.jamie_phone
+destination: sensor.dest_address
+region: 'EU'
+units: imperial

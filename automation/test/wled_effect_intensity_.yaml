@@ -1,0 +1,10 @@
+alias: WLED Effect Intensity
+initial_state: true
+trigger:
+- platform: state
+  entity_id: input_number.wled_effect_intensity
+action:
+- service: mqtt.publish
+  data_template:
+    topic: wled/75526c/api
+    payload: "[IX={{ states('input_number.wled_effect_intensity') | int }}]"

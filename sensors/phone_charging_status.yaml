@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  phone_charging:
+    friendly_name: "Jamie's phone charging status"
+    value_template: >-
+      {{ state_attr("sensor.jamie_phone_battery_state", "charger_type") }}

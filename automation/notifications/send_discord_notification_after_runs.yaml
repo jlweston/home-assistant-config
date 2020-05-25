@@ -1,0 +1,18 @@
+alias: Send Discord notification after a run
+description: ''
+trigger:
+- above: 5000
+  device_id: 57043126c4034beea40959a6e75b684e
+  domain: sensor
+  entity_id: sensor.total_distance_mtr
+  platform: device
+  type: value
+condition: []
+action:
+- data:
+    target:
+    - '697513724034023464'
+  data_template:
+    message: Great run! You covered {{ (states('sensor.total_distance_mtr') | float
+      / 1000) | round(2, 'floor')}}km.
+  service: notify.alfred

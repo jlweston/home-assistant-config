@@ -1,0 +1,12 @@
+alias: Sound the alarm
+trigger:
+  platform: event
+  event_type: mobile_app_notification_action
+  event_data:
+    action: alarm
+action:
+  data_template:
+    message: Notification action received.
+    target:
+    - '697513724034023464'
+  service: notify.alfred

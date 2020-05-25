@@ -1,0 +1,10 @@
+alias: WLED Effect Speed
+initial_state: true
+trigger:
+- platform: state
+  entity_id: input_number.wled_effect_speed
+action:
+- service: mqtt.publish
+  data_template:
+    topic: wled/75526c/api
+    payload: "[SX={{ states('input_number.wled_effect_speed') | int }}]"

@@ -1,0 +1,6 @@
+alias: Jamie away
+sequence:
+# Everybody has a boolean that defines if they're home or away. They're home, 
+#  so turn it on
+- service: input_boolean.turn_off
+  entity_id: input_boolean.jamie_home

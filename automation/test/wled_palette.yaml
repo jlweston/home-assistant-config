@@ -1,0 +1,10 @@
+alias: WLED Palette
+initial_state: true
+trigger:
+- platform: state
+  entity_id: input_select.wled_palette_list
+action:
+- service: mqtt.publish
+  data_template:
+    topic: wled/75526c/api
+    payload: "{{ states('input_select.wled_palette_list') }}"

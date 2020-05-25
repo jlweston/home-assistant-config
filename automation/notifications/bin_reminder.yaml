@@ -1,0 +1,16 @@
+alias: Bin reminder
+description: ''
+trigger:
+- at: '19:30:00'
+  platform: time
+condition:
+- condition: time
+  weekday:
+  - mon
+action:
+- data_template:
+    message: Remember to put the {% if now().isocalendar()[1] % 2 %}green{% else
+      %}blue{% endif %} bin out!
+    target:
+    - '697513724034023464'
+  service: notify.alfred

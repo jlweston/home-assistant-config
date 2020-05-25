@@ -1,0 +1,35 @@
+initial_state: 'on'
+alias: 'Jamie away'
+trigger:
+# Trigger when any of their local trackers show home
+- platform: numeric_state
+  entity_id: proximity.jamie_home
+  above: 300
+- platform: numeric_state
+  entity_id: proximity.jamie_home
+  above: 600
+- platform: state
+  entity_id: 
+    - device_tracker.jamie_bt_mobile_living_room
+    - device_tracker.c0_ee_fb_e1_dc_b8
+  to: 'not_home'
+- platform: homeassistant
+  event: start
+condition:
+# As long as at least two trackers mark as away, they're away
+- condition: numeric_state
+  entity_id: group.jamies_tracking_devices
+  below: 1
+  value_template: >-
+    {{ dict((states|selectattr('entity_id', 'in', state_attr('group.jamies_tracking_devices', 'entity_id'))|list)|groupby('state'))['home']|count }}
+- condition: and
+  conditions:
+  - condition: state
+    entity_id: group.jamies_tracking_devices
+    state: 'not_home'
+  - condition: numeric_state
+    entity_id: proximity.jamie_home
+    above: 300
+action:
+# Call the script we wrote above
+- service: script.jamie_away

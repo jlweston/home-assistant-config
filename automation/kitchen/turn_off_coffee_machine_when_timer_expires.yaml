@@ -1,0 +1,19 @@
+alias: Kitchen - turn off coffee machine when timer expires
+description: ''
+trigger:
+- event_data:
+    event_data:
+      entity_id: timer.coffee_machine
+  event_type: timer.finished
+  platform: event
+- event_data:
+    event_data:
+      entity_id: timer.coffee_machine
+  event_type: timer.cancelled
+  platform: event
+condition: []
+action:
+- device_id: a7b88beeb7e2459f90ce0fbfc5ec5985
+  domain: switch
+  entity_id: switch.kitchen_plug
+  type: turn_off

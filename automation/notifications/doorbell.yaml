@@ -1,0 +1,25 @@
+alias: Doorbell pressed
+description: ''
+trigger:
+- entity_id: binary_sensor.front_doorbell
+  from: 'off'
+  platform: state
+  to: 'on'
+condition: []
+action:
+- service: notify.alfred
+  data:
+    message: Someone is at the door!
+    target:
+    - '697513724034023464'
+- service: notify.alexa_media
+  data:
+    data:
+      type: tts
+    message: Ding dong!
+    target:
+    - media_player.jamie_s_echo_dot
+- service: notify.mobile_app_oneplus_a6003
+  data:
+    title: "Ding dong!"
+    message: "Someone is at the front door!"

@@ -1,0 +1,16 @@
+alias: Turn on study light when arriving home (if after sunset)
+description: ''
+trigger:
+- entity_id: person.jamie
+  event: enter
+  platform: zone
+  zone: zone.home
+condition:
+- after: sunset
+  condition: sun
+action:
+- brightness_pct: 60
+  device_id: e5d62ecff8be4185a8cc9a124160c3b4
+  domain: light
+  entity_id: light.0x7cb03eaa0a050284_light #study light
+  type: turn_on

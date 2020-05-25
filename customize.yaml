@@ -1,0 +1,10 @@
+person.jamie:
+  entity_picture: /local/images/jw-colour.jpg
+plant.calathea_rufibarba:
+  friendly_name: 'Calathea Rufibarba'
+input_text.address_home:
+  hidden: true
+input_text.address_inlaws:
+  hidden: true
+input_text.address_work:
+  hidden: true

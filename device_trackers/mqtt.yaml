@@ -1,0 +1,6 @@
+platform: mqtt
+source_type: 'bluetooth'
+devices:
+  jamie_bt_mobile_living_room: 'monitor/living_room/jamie_bluetooth/device_tracker'
+  jamie_bt_watch_living_room:  'monitor/living_room/jamie_watch/device_tracker'
+  karen_bt_mobile_living_room: 'monitor/living_room/karen_bluetooth/device_tracker'
