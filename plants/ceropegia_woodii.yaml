@@ -1,0 +1,9 @@
+sensors:
+  moisture: sensor.ceropegia_woodii_moisture
+  # battery: sensor.ceropegia_woodii_battery_level # doesn't work from ESP
+  temperature: sensor.ceropegia_woodii_temperature
+  conductivity: sensor.ceropegia_woodii_soil_conductivity
+  brightness: sensor.ceropegia_woodii_light_intensity
+min_moisture: 10
+min_battery: 10
+min_conductivity: 0

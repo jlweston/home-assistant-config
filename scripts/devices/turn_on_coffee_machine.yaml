@@ -1,9 +1,0 @@
-alias: Turn on coffee machine
-sequence:
-- device_id: a7b88beeb7e2459f90ce0fbfc5ec5985
-  domain: switch
-  entity_id: switch.kitchen_plug
-  type: turn_on
-- data: {}
-  entity_id: timer.coffee_machine
-  service: timer.start

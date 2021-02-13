@@ -1,0 +1,10 @@
+alias: Study - Close Blinds at Sunset
+description: ""
+trigger:
+  - below: -4
+    entity_id: sun.sun
+    platform: numeric_state
+    attribute: elevation
+action:
+  entity_id: cover.0x680ae2fffe7d5dd5
+  service: cover.close_cover

@@ -1,141 +1,72 @@
 # base config
 homeassistant:
   customize: !include customize.yaml
+  auth_providers: !include auth_providers.yaml
 
 default_config: # left deliberately empty (https://www.home-assistant.io/integrations/default_config/)
 
 http:
-  base_url: !secret base_url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: false
+  login_attempts_threshold: 5
 
 frontend:
-  javascript_version: latest
+  themes: !include_dir_merge_named themes
+
+logger:
+  default: warning
 
 automation: !include_dir_list automation/
+binary_sensor: !include_dir_list binary_sensors/
 device_tracker: !include_dir_list device_trackers/
 group: !include groups.yaml
-script: !include_dir_named scripts/
-scene: !include scenes.yaml
-sensor: !include_dir_list sensors/
-
-# helpers
 input_number: !include_dir_named input_number/
 input_boolean: !include_dir_named input_boolean/
 input_select: !include_dir_named input_select/
 input_datetime: !include_dir_named input_datetime/
 input_text: !include_dir_named input_text/
-timer: !include_dir_named timers/
-
-# miscellaneous
+light: !include_dir_merge_list light/
+mqtt: !include mqtt.yaml
+notify: !include_dir_merge_list notify/
 plant: !include_dir_named plants/
+proximity: !include_dir_named proximity/
+recorder: !include recorder.yaml
+script: !include_dir_named scripts/
+scene: !include scenes.yaml
+sensor: !include_dir_list sensors/
+switch: !include_dir_merge_list switch/
+timer: !include_dir_named timers/
+wake_on_lan: # deliberately empty, switches on WOL integration
 
-zigbee2mqtt_networkmap:
-  topic: zigbee2mqtt
+microsoft_graph:
+  client_id: !secret microsoft_graph_client_id
+  client_secret: !secret microsoft_graph_client_secret
 
 panel_iframe:
   networkmap:
-    title: 'Zigbee Map'
-    url: '/local/community/zigbee2mqtt_networkmap/map.html'
-    icon: 'mdi:graphql'
+    title: "Zigbee Map"
+    url: "/local/community/zigbee2mqtt_networkmap/map.html"
+    icon: "mdi:graphql"
 
-mqtt:
-  username: !secret mqtt_broker_username
-  password: !secret mqtt_broker_password
-  broker: 127.0.0.1
-  discovery: true
-  discovery_prefix: homeassistant
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
-
-alexa_media:
-  accounts:
-    - email: !secret amazon_user
-      password: !secret amazon_password
-      url: amazon.co.uk
-      debug: False
-      exclude_devices:
-      - Karen's Alexa Apps
-      - Jamie's Fire TV stick
-      - Jamie's Fire TV
-      - monotone's Alexa Apps
-
-proximity:
-  jamie_home:
-    zone: home
-    devices:
-    - device_tracker.jamie_phone
-    unit_of_measurement: m
-
-# Discord notifications
-notify:
-  - platform: discord
-    name: Alfred
-    token: !secret discord_token
-
-tplink:
-  discovery: false
-  switch:
-    - host: 192.168.1.9 # coffee machine plug
-
-# Spotify
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
 
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    # parse_mode: html
+    url: !secret base_url
+    allowed_chat_ids:
+      - !secret telegram_jamie_chat_id
 
-binary_sensor:
-  - platform: mqtt
-    name: "Front doorbell"
-    state_topic: "tele/tasmota_C082EE/RESULT"
-    payload_on: "B1E2C2"
-    off_delay: 10
-    availability_topic: "tele/tasmota_C082EE/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    value_template: "{{ value_json.RfReceived.Data }}"
-  - platform: workday
-    country: UK
+tplink:
+  discovery: false
+  switch:
+    - host: 192.168.0.12 # coffee machine plug
 
+tts:
+  - platform: google_translate
+    base_url: !secret base_url
 
-# Fire TV
-media_player:
-  # Use the Python ADB implementation with a user-provided key to setup an
-  # Android TV device. Provide some app names and don't display other apps
-  # in the sources menu. Override the default turn on/off commands, and
-  # provide custom state detection rules.
-  - platform: androidtv
-    name: Fire TV 4K
-    device_class: firetv
-    host: 192.168.1.17
-    adb_server_ip: 127.0.0.1
-    adb_server_port: 5037
-    turn_on_command: "input keyevent 3"
-    turn_off_command: "input keyevent 223"
-    state_detection_rules:
-      'com.amazon.tv.launcher':
-        - 'standby'
-      'com.netflix.ninja':
-        - 'media_session_state'
-      'com.plexapp.android':
-        - 'paused':
-            'media_session_state': 3  # this indentation is important!
-            'wake_lock_size': 1       # this indentation is important!
-        - 'playing':
-            'media_session_state': 3  # this indentation is important!
-        - 'standby'
-
-# influxdb:
-#   database: default
-#   username: !secret influxdb_username
-#   password: !secret influxdb_password
-#   max_retries: 3
-#   default_measurement: state
-#   include:
-#     entities:
-#        - binary_sensor.front_doorbell
-#        - sensor.mi_flora_moisture
+zigbee2mqtt_networkmap:
+  topic: zigbee2mqtt

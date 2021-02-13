@@ -8,5 +8,5 @@ action:
   data_template:
     message: Notification action received.
     target:
-    - '697513724034023464'
+      - !secret discord_chat_id
   service: notify.alfred

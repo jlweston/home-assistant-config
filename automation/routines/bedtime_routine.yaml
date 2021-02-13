@@ -1,0 +1,29 @@
+alias: Turn things off at night
+description: ""
+trigger:
+  - entity_id: input_boolean.bedtime
+    platform: state
+    from: "off"
+    to: "on"
+condition: []
+action:
+  - entity_id: media_player.spotify
+    service: media_player.media_pause
+  - entity_id: switch.study_light_switch #study light
+    service: switch.turn_off
+  - entity_id: switch.landing_switch #upstairs switch for landing light
+    service: switch.turn_off
+  - entity_id: switch.lounge_switch_left #lounge light switch
+    service: switch.turn_off
+  - entity_id: switch.bedroom_light_switch #bedroom light switch
+    service: switch.turn_off
+  - entity_id: switch.spare_bedroom_light_switch #spare bedroom light switch
+    service: switch.turn_off
+  - entity_id: switch.kitchen_light_switch #kitchen light switch
+    service: switch.turn_off
+  - entity_id: switch.garage_light_switch #garage light switch
+    service: switch.turn_off
+  - entity_id: switch.dining_room_light_switch #dining room light switch
+    service: switch.turn_off
+  - entity_id: switch.dining_room_switch_left_switch #Christmas tree
+    service: switch.turn_off

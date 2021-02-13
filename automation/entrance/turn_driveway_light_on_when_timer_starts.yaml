@@ -1,0 +1,8 @@
+alias: Driveway - turn on light when timer starts
+trigger:
+  - entity_id: timer.driveway_light
+    platform: state
+    to: "active"
+action:
+  - entity_id: switch.front_door_light_switch
+    service: switch.turn_on

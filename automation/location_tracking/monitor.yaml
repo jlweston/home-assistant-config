@@ -1,0 +1,7 @@
+alias: 'Monitor (BT presence detection)'
+trigger:
+  platform: time_pattern
+  minutes: /5
+action:
+- service: script.scan_bt_arrive
+- service: script.scan_bt_depart

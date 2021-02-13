@@ -1,0 +1,10 @@
+alias: Bedroom - toggle lights
+description: ''
+trigger:
+- to: 'single' # off = contact
+  entity_id: sensor.0x00158d000401926f_click
+  platform: state
+condition:
+action:
+  entity_id: switch.bedroom_light_switch # bedroom light
+  service: switch.toggle

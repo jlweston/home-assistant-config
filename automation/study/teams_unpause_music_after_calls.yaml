@@ -1,0 +1,26 @@
+alias: Teams Presence - unpause music after calls
+trigger:
+  - platform: state
+    entity_id: sensor.microsoft_teams_activity
+condition:
+  - condition: template
+    value_template: "{{ trigger.to_state.state == 'Available' }}"
+  - condition: template
+    value_template: "{{ is_state('input_boolean.music_paused_for_meeting', 'on') }}"
+action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.music_paused_for_meeting
+  - condition: template
+    value_template: "{{ states('input_text.music_source') != '' }}"
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.spotify
+      source: "{{ states('input_text.music_source') }}"
+  - delay: 1
+  - service: media_player.media_play
+    data:
+      entity_id: media_player.spotify
+  - service: input_text.set_value
+    entity_id: input_text.music_source
+    data:
+      value: ""

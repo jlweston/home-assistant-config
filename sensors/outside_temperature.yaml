@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  outside_temperature:
+    friendly_name: "Outside temperature"
+    value_template: "{{ state_attr('weather.met_office_newcastle_international_airport', 'temperature') }}"
+    unit_of_measurement: '°C'

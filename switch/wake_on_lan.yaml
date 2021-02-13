@@ -1,0 +1,5 @@
+- platform: wake_on_lan
+  mac: "70:85:C2:D8:83:08"
+  name: "Jamie's PC (Ethernet)"
+  host: 192.168.0.17
+  broadcast_address: 192.168.0.255

@@ -1,0 +1,11 @@
+alias: NeoPixel - turn on when someone at door
+trigger:
+- entity_id: input_boolean.someone_at_door
+  platform: state
+  to: 'on'
+condition: []
+action:
+  - service: wled.preset
+    entity_id: light.wled_2
+    data:
+      preset: 1

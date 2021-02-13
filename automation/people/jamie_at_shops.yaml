@@ -1,0 +1,15 @@
+alias: Jamie is shopping
+description: "Sets input_boolean.announce_return_jamie to true when at the shops alone."
+trigger:
+- platform: state
+  entity_id: person.jamie
+  to: "Tesco"
+  for: "00:05:00"
+condition:
+- condition: state
+  entity_id: person.karen
+  state: "home"
+action:
+- data: {}
+  entity_id: input_boolean.announce_return_jamie
+  service: input_boolean.turn_on

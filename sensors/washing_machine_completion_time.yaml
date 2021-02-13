@@ -1,0 +1,16 @@
+platform: template
+sensors:
+  wachine_machine_completion_time:
+    friendly_name: "Washing machine completion time"
+    value_template: >-
+      {% set seconds = (as_timestamp(states.sensor.washing_machine_washer_completion_time.state) - as_timestamp(now())) | int %}
+      {%- set map = {
+            'Hour': (seconds / 3600),
+            'Minute': (seconds / 60) % 60,
+            'Second': (seconds % 60) } -%}
+      {% if states('sensor.washing_machine_washer_machine_state') != 'run' %}Idle{% else %}
+      {% for item in map if map[item] | int > 0 -%}
+        {%- if loop.first %}{% else %}, {% endif -%}
+        {{- map[item]|int }} {{ item -}} {{- 's' if map[item]|int > 1 -}}
+      {%- endfor %}
+      {% endif %}

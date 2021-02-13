@@ -1,0 +1,2 @@
+platform: otp
+token: !secret azure_otp_token

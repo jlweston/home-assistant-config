@@ -1,0 +1,4 @@
+zone: home
+devices:
+  - device_tracker.jamiesphone # from GPSLogger
+unit_of_measurement: m

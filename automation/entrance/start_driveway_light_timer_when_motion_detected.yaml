@@ -1,0 +1,12 @@
+alias: Driveway - start driveway light timer when motion detected after dark
+trigger:
+  - entity_id: binary_sensor.0x00158d00052d41b3_occupancy
+    platform: state
+    to: "on"
+condition:
+  - condition: template
+    value_template: "{{ states('sensor.0x00158d00052d41b3_illuminance')|float < 10 }}"
+action:
+  - service: timer.start
+    data:
+      entity_id: timer.driveway_light

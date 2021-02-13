@@ -1,0 +1,22 @@
+alias: Study - Control blinds from remote
+trigger:
+  - entity_id: sensor.0x680ae2fffe7ab418_action # IKEA remote
+    platform: state
+action:
+  - choose:
+      # If finished
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.to_state.state == 'open' }}"
+        sequence:
+          - entity_id: cover.0x680ae2fffe7d5dd5 # study blinds
+            service: cover.set_cover_position
+            data:
+              position: 97
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.to_state.state == 'close' }}"
+        sequence:
+          - entity_id: cover.0x680ae2fffe7d5dd5
+            service: cover.close_cover
+  - delay: 2

@@ -1,0 +1,6 @@
+name: Holiday mode
+icon: mdi:beach
+options:
+  - Working
+  - Not working
+  - Vacation

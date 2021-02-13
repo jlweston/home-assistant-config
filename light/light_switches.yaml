@@ -1,0 +1,30 @@
+- platform: switch
+  name: Bedroom Light
+  entity_id: switch.bedroom_light_switch
+- platform: switch
+  name: Dining Room Light
+  entity_id: switch.dining_room_light_switch
+- platform: switch
+  name: Driveway Light
+  entity_id: switch.front_door_light_switch
+- platform: switch
+  name: Garage Light
+  entity_id: switch.garage_light_switch
+- platform: switch
+  name: Kitchen Light
+  entity_id: switch.kitchen_light_switch
+- platform: switch
+  name: Landing Light
+  entity_id: switch.landing_switch
+- platform: switch
+  name: Lounge Light
+  entity_id: switch.lounge_switch_left
+- platform: switch
+  name: Porch Light
+  entity_id: switch.porch_light_switch_left
+- platform: switch
+  name: Study Light
+  entity_id: switch.study_light_switch
+- platform: switch
+  name: Spare Bedroom Light
+  entity_id: switch.spare_bedroom_light_switch

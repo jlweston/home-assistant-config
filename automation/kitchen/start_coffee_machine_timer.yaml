@@ -1,0 +1,9 @@
+alias: Kitchen - start timer when coffee machine turned on
+trigger:
+  - platform: state
+    entity_id: switch.kitchen_plug
+    from: 'off'
+    to: 'on'
+action:
+  - entity_id: timer.coffee_machine
+    service: timer.start

@@ -1,0 +1,17 @@
+alias: "Keep lounge lightswitches in sync"
+trigger:
+  - platform: state
+    entity_id: switch.lounge_switch_left, switch.porch_light_switch_right
+    from: "on"
+    to: "off"
+    for: "00:00:01"
+  - platform: state
+    entity_id: switch.lounge_switch_left, switch.porch_light_switch_right
+    from: "off"
+    to: "on"
+    for: "00:00:01"
+action:
+  service: >
+    homeassistant.turn_{{ trigger.to_state.state }}
+  data:
+    entity_id: group.lounge_switches

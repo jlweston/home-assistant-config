@@ -1,0 +1,9 @@
+alias: Porch - turn off light when timer ends
+trigger:
+  - entity_id: timer.entrance_lights
+    platform: state
+    from: "active"
+action:
+  - wait_template: "{{ is_state('binary_sensor.front_door_contact', 'off') and is_state('binary_sensor.porch_door_contact', 'off') }}"
+  - entity_id: switch.porch_light_switch_left
+    service: switch.turn_off

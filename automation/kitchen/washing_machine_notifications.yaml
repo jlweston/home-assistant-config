@@ -1,0 +1,29 @@
+alias: "Kitchen - washing machine notifications"
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: sensor.washing_machine_washer_job_state
+action:
+  - choose:
+      # If finished
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.to_state.state == 'finish' }}"
+        sequence:
+          - service: notify.alfred
+            data:
+              message: The washing machine has finished.
+              target:
+                - "697513724034023464"
+      # If drying
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.to_state.state == 'drying' }}"
+        sequence:
+          - service: notify.alfred
+            data:
+              message: >
+                {% set remaining = ((as_timestamp(states('sensor.washing_machine_washer_completion_time')) - as_timestamp(now())) / 60) | round(0) %}
+                The washing machine is drying: {{ remaining }} minutes left.
+              target:
+                - "697513724034023464"

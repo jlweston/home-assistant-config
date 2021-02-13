@@ -1,0 +1,10 @@
+alias: Garage - turn lights on when side door opens
+description: ''
+trigger:
+- to: 'on' # on = no contact
+  entity_id: binary_sensor.garage_side_door_contact
+  platform: state
+condition:
+action:
+  entity_id: switch.garage_light_switch #study light
+  service: switch.turn_on

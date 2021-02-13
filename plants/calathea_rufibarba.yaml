@@ -1,9 +1,9 @@
 sensors:
-  moisture: sensor.mi_flora_moisture
-  battery: sensor.mi_flora_battery
-  temperature: sensor.mi_flora_temperature
-  conductivity: sensor.mi_flora_conductivity
-  brightness: sensor.mi_flora_light_intensity
-min_moisture: 10
+  moisture: sensor.calathea_rufibarba_moisture
+  # battery: sensor.calathea_rufibarba_battery_level # doesn't work from ESP
+  temperature: sensor.calathea_rufibarba_temperature
+  conductivity: sensor.calathea_rufibarba_soil_conductivity
+  brightness: sensor.calathea_rufibarba_light_intensity
+min_moisture: 6
 min_battery: 10
 min_conductivity: 0

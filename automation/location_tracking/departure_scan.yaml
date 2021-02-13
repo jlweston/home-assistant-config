@@ -1,0 +1,11 @@
+alias: 'Departure scan'
+initial_state: on
+trigger:
+- platform: state
+  entity_id: binary_sensor.front_door_contact
+  to: 'off'
+- platform: state
+  entity_id: binary_sensor.kitchen_door_contact
+  to: 'off'
+action:
+- service: script.scan_bt_depart

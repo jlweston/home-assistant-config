@@ -1,0 +1,23 @@
+{
+  "platform": "darksky",
+  "api_key": !secret darksky_api_key,
+  "forecast": [0, 1, 2, 3, 4, 5, 6],
+  "hourly_forecast": [0, 1, 2, 3, 4, 5, 6],
+  "monitored_conditions":
+    [
+      "summary",
+      "icon",
+      "temperature",
+      "precip_type",
+      "precip_intensity",
+      "precip_probability",
+      "temperature",
+      "wind_speed",
+      "wind_bearing",
+      "cloud_cover",
+      "humidity",
+      "temperature_high",
+      "temperature_low",
+    ],
+  "units": "uk",
+}

@@ -1,0 +1,19 @@
+initial_state: off
+alias: 'Karen home'
+trigger:
+# Trigger when any of their local trackers show home
+- platform: state
+  entity_id: 
+    - device_tracker.karen_mobile_bt
+  to: 'home'
+# Trigger when HA starts
+- platform: homeassistant
+  event: start
+condition:
+# As long as at least one tracker shows home
+- condition: state
+  entity_id: group.karens_tracking_devices
+  state: 'home'
+action:
+# Call the script we wrote above
+- service: script.karen_home

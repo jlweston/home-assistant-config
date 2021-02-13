@@ -1,0 +1,14 @@
+alias: 'Telegram bot that repeats text'
+trigger:
+  platform: event
+  event_type: telegram_text
+action:
+  - service: telegram_bot.send_message
+    data_template:
+      title: '*Dumb automation*'
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'You said: {{ trigger.event.data.text }}'
+      disable_notification: true
+      inline_keyboard:
+        - "Edit message:/edit_msg, Don't:/do_nothing"
+        - "Remove this button:/remove_button"

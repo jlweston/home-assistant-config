@@ -1,10 +1,14 @@
 person.jamie:
   entity_picture: /local/images/jw-colour.jpg
 plant.calathea_rufibarba:
-  friendly_name: 'Calathea Rufibarba'
+  friendly_name: "Calathea Rufibarba"
+plant.ceropegia_woodii:
+  friendly_name: "Ceropegia Woodii"
 input_text.address_home:
   hidden: true
 input_text.address_inlaws:
   hidden: true
 input_text.address_work:
   hidden: true
+media_player.karens_study_speaker:
+  room: "study"

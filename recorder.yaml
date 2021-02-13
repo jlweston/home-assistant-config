@@ -1,0 +1,7 @@
+db_url: !secret db_url
+exclude:
+  domains:
+    - device_tracker
+  entities:
+    - sensor.otp_sensor
+    - sensor.otp_sensor_2

@@ -1,0 +1,18 @@
+alias: Plex refresh
+description: "Plex - refresh Movies library when download completes"
+trigger:
+  - platform: webhook
+    webhook_id: sonarr-post-download
+action:
+  - service: mqtt.publish
+    data:
+      topic: iotlink/workgroup/jamie-pc/commands/run
+      payload: >-
+        {
+          "command": "C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Scanner.exe",
+          "args": "--scan --refresh --section 1",
+          "path": "C:\\Program Files (x86)\\Plex\\Plex Media Server",
+          "user": "",
+          "visible": false,
+          "fallback": true
+        }

@@ -1,0 +1,7 @@
+alias: Turn on PC
+sequence:
+  - service: wake_on_lan.send_magic_packet
+    data:
+      broadcast_address: 192.168.0.255
+      broadcast_port: 9
+      mac: "70:85:C2:D8:83:08"

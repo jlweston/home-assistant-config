@@ -1,0 +1,19 @@
+alias: Teams Presence - pause music for calls
+trigger:
+  - platform: state
+    entity_id: sensor.microsoft_teams_activity
+condition:
+  - condition: template
+    value_template: "{{ trigger.to_state.state in ['DoNotDisturb','InACall','InAConferenceCall','Presenting'] }}"
+  - condition: template
+    value_template: "{{ is_state('media_player.spotify', 'playing') }}"
+action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.music_paused_for_meeting
+  - service: input_text.set_value
+    entity_id: input_text.music_source
+    data:
+      value: "{{ state_attr('media_player.spotify', 'source') }}"
+  - service: media_player.media_pause
+    data:
+      entity_id: media_player.spotify

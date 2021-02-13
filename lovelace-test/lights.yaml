@@ -1,0 +1,74 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.bedroom_light
+        icon: 'mdi:bed-king'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+      - type: 'custom:button-card'
+        entity: light.spare_bedroom_light
+        icon: 'mdi:bed-single'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+      - type: 'custom:button-card'
+        entity: light.study_light
+        icon: 'mdi:desk-lamp'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.dining_room_light
+        icon: 'mdi:food'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+      - type: 'custom:button-card'
+        entity: light.lounge_light
+        icon: 'mdi:sofa'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+      - type: 'custom:button-card'
+        entity: light.kitchen_light
+        icon: 'mdi:pot'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.porch_light
+        icon: 'mdi:door'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+      - type: 'custom:button-card'
+        entity: light.driveway_light
+        icon: 'mdi:car'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+      - type: 'custom:button-card'
+        entity: light.garage_light
+        icon: 'mdi:garage'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: switch.dining_room_switch_left_switch
+        icon: 'mdi:pine-tree'
+        color: 'rgb(28, 128, 199)'
+        show_name: false
+        aspect_ratio: 1/1
+      - type: 'custom:button-card'
+        color_type: blank-card
+      - type: 'custom:button-card'
+        color_type: blank-card

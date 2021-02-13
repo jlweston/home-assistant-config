@@ -1,0 +1,10 @@
+alias: PC Volume (update)
+initial_state: true
+trigger:
+- platform: state
+  entity_id: sensor.jamie_pc_media_volume
+action:
+- service: input_number.set_value
+  data_template:
+    entity_id: input_number.pc_volume
+    value: "{{ trigger.to_state.state }}"

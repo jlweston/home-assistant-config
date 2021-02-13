@@ -1,0 +1,4 @@
+platform: mqtt
+source_type: "bluetooth_le"
+devices:
+  car_bt: "monitor/pi/car/device_tracker"

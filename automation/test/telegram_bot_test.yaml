@@ -1,0 +1,10 @@
+alias: "Telegram bot that reply pong to ping"
+trigger:
+  platform: event
+  event_type: telegram_callback
+  event_data:
+    command: "/ping"
+action:
+  - service: notify.jamie_s_telegram
+    data:
+      message: "pong"

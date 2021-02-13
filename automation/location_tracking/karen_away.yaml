@@ -1,0 +1,26 @@
+initial_state: off
+alias: 'Karen away'
+trigger:
+- platform: state
+  entity_id: 
+    - device_tracker.karen_mobile_bt
+  to: 'not_home'
+- platform: homeassistant
+  event: start
+condition:
+# As long as at least two trackers mark as away, they're away
+- condition: numeric_state
+  entity_id: group.karens_tracking_devices
+  below: 1
+  value_template: >-
+    {{ dict((states|selectattr('entity_id', 'in', state_attr('group.karens_tracking_devices', 'entity_id'))|list)|groupby('state'))['home']|count }}
+- condition: and
+  conditions:
+  - condition: state
+    entity_id: group.karens_tracking_devices
+    state: 'not_home'
+  - condition: numeric_state
+    entity_id: proximity.karen_home
+    above: 300
+action:
+- service: script.karen_away

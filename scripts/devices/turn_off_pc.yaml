@@ -1,0 +1,12 @@
+alias: Turn off PC
+sequence:
+- service: mqtt.publish
+  data_template:
+    topic: iotlink/workgroup/jamie-pc/commands/audio/volume
+    payload: '0'
+- delay:
+    seconds: 1
+- service: mqtt.publish
+  data_template:
+    topic: iotlink/workgroup/jamie-pc/commands/shutdown
+    payload: 'a'

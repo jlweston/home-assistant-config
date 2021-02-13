@@ -1,0 +1,15 @@
+alias: Porch - start porch light timer when door opens
+trigger:
+  - entity_id: binary_sensor.porch_door_contact
+    platform: state
+    to: "on"
+  - entity_id: binary_sensor.front_door_contact
+    platform: state
+    to: "on"
+condition:
+  - condition: template
+    value_template: "{{ states('sensor.0x00158d00052d41b3_illuminance')|float < 10 }}"
+action:
+  - service: timer.start
+    data:
+      entity_id: timer.entrance_lights

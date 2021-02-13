@@ -1,11 +1,9 @@
-initial_state: 'on'
 alias: 'Jamie home'
 trigger:
 # Trigger when any of their local trackers show home
 - platform: state
-  entity_id: 
-    - device_tracker.c0_ee_fb_e1_dc_b8
-    - device_tracker.jamie_bt_mobile_living_room
+  entity_id:
+    - device_tracker.jamie_mobile_bt
   to: 'home'
 # Trigger when HA starts
 - platform: homeassistant

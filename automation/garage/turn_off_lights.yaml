@@ -1,0 +1,10 @@
+alias: Garage - turn lights off when side door closes
+description: ''
+trigger:
+- to: 'off' # off = contact
+  entity_id: binary_sensor.garage_side_door_contact
+  platform: state
+condition: []
+action:
+  entity_id: switch.garage_light_switch #study light
+  service: switch.turn_off

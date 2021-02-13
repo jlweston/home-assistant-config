@@ -10,10 +10,16 @@ condition:
   entity_id: input_boolean.announce_return_jamie
   state: 'on'
 action:
-- service: mqtt.publish
+- service: media_player.play_media
   data:
-    topic: "cmnd/tasmota_C082EE/backlog"
-    payload: "RfSync 8700; RfLow 270; RfHigh 840; RfCode #B1E2C2;"
+    media_content_type: audio/mp3
+    media_content_id: http://192.168.0.27:8123/local/mp3/dingdong.mp3
+    entity_id: media_player.kitchen_speaker
+- service: media_player.play_media
+  data:
+    media_content_type: audio/mp3
+    media_content_id: http://192.168.0.27:8123/local/mp3/dingdong.mp3
+    entity_id: media_player.karens_study_speaker
 - data: {}
   entity_id: input_boolean.announce_return_jamie
   service: input_boolean.turn_off

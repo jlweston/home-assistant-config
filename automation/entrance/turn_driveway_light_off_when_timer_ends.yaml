@@ -1,0 +1,8 @@
+alias: Driveway - turn off light when timer ends
+trigger:
+  - entity_id: timer.driveway_light
+    platform: state
+    from: "active"
+action:
+  - entity_id: switch.front_door_light_switch
+    service: switch.turn_off

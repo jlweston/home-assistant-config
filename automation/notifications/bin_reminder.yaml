@@ -9,8 +9,8 @@ condition:
   - mon
 action:
 - data_template:
-    message: Remember to put the {% if now().isocalendar()[1] % 2 %}green{% else
-      %}blue{% endif %} bin out!
+    message: Remember to put the {% if now().isocalendar()[1] % 2 %}blue{% else
+      %}green{% endif %} bin out!
     target:
     - '697513724034023464'
   service: notify.alfred

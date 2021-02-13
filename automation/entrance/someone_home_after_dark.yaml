@@ -1,0 +1,28 @@
+alias: Someone home after dark
+trigger:
+  - platform: state
+    entity_id: sensor.jamie_phone_wifi_connection
+    from: "VM0031307-5"
+    for:
+      minutes: 15
+  - platform: state
+    entity_id: person.jamie
+    from: "home"
+    for:
+      minutes: 15
+  - platform: state
+    entity_id: person.karen
+    from: "home"
+    for:
+      minutes: 15
+action:
+  - wait_template: "{{ is_state(trigger.to_state.entity_id, 'home') or is_state(trigger.to_state.entity_id, 'VM0031307-5') }}"
+  - condition: template
+    value_template: "{{ states('sensor.0x00158d00052d41b3_illuminance')|float < 10 }}"
+  - service: timer.start
+    data:
+      entity_id: timer.entrance_lights
+  - service: timer.start
+    data:
+      entity_id: timer.driveway_light
+mode: parallel

@@ -1,0 +1,10 @@
+alias: PC Volume (update)
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: input_number.pc_volume
+action:
+  - service: mqtt.publish
+    data_template:
+      topic: JAMIE-PC/volume/set
+      payload: "{{ states('input_number.pc_volume') |int }}"

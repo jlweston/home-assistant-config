@@ -1,7 +1,6 @@
-initial_state: 'on'
+initial_state: 'off'
 alias: 'Jamie away'
 trigger:
-# Trigger when any of their local trackers show home
 - platform: numeric_state
   entity_id: proximity.jamie_home
   above: 300
@@ -10,8 +9,7 @@ trigger:
   above: 600
 - platform: state
   entity_id: 
-    - device_tracker.jamie_bt_mobile_living_room
-    - device_tracker.c0_ee_fb_e1_dc_b8
+    - device_tracker.jamie_mobile_bt
   to: 'not_home'
 - platform: homeassistant
   event: start
@@ -31,5 +29,4 @@ condition:
     entity_id: proximity.jamie_home
     above: 300
 action:
-# Call the script we wrote above
 - service: script.jamie_away

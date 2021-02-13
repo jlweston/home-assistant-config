@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  house_temperature:
+    friendly_name: "House temperature"
+    value_template: "{{ state_attr('climate.0x001e5e09025e96ff_climate', 'current_temperature') }}"
+    unit_of_measurement: "°C"

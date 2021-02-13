@@ -1,0 +1,6 @@
+- type: trusted_networks
+  trusted_networks:
+    - 192.168.0.0/24
+    - 127.0.0.1/32
+    - fd00::/8
+- type: homeassistant

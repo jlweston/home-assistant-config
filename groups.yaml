@@ -8,14 +8,26 @@ landing_switches:
   entities:
     - switch.landing_switch
     - switch.lounge_switch_right
+lounge_switches:
+  name: Lounge Switches
+  entities:
+    - switch.lounge_switch_left
+    - switch.porch_light_switch_right
 jamies_tracking_devices:
   name: Jamie's tracking devices
   entities:
-    - device_tracker.jamie_bt_mobile_living_room
-    - device_tracker.jamie_bt_watch_living_room
-    - device_tracker.c0_ee_fb_e1_dc_b8
+    - device_tracker.jamie_mobile_bt
 karens_tracking_devices:
   name: Karen's tracking devices
   entities:
-    - device_tracker.karen_bt_mobile_living_room
-    - device_tracker.74_b5_87_e8_0e_f1
+    - device_tracker.karen_mobile_bt
+
+doors:
+  name: Doors
+  entities:
+    - binary_sensor.front_door_contact
+    - binary_sensor.porch_door_contact
+    - binary_sensor.kitchen_door_contact
+    - binary_sensor.patio_door_contact
+    - binary_sensor.garage_side_door_contact
+    - binary_sensor.garage_main_door_contact

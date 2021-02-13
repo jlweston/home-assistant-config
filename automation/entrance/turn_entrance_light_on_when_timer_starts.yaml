@@ -1,0 +1,8 @@
+alias: Porch - turn on light when timer starts
+trigger:
+  - entity_id: timer.entrance_lights
+    platform: state
+    to: "active"
+action:
+  - entity_id: switch.porch_light_switch_left
+    service: switch.turn_on

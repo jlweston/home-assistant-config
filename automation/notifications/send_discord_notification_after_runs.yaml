@@ -11,7 +11,7 @@ condition: []
 action:
 - data:
     target:
-    - '697513724034023464'
+    - !secret discord_chat_id
   data_template:
     message: Great run! You covered {{ (states('sensor.total_distance_mtr') | float
       / 1000) | round(2, 'floor')}}km.

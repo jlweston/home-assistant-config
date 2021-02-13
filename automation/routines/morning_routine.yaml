@@ -1,0 +1,24 @@
+alias: Turn things on in the morning
+trigger:
+  - entity_id: input_boolean.bedtime
+    platform: state
+    from: "on"
+    to: "off"
+action:
+  - entity_id: cover.0x680ae2fffe7d5dd5 # study blinds
+    service: cover.set_cover_position
+    data:
+      position: 97
+  - condition: state
+    entity_id: input_select.holiday_mode
+    state: "Working"
+  - service: wake_on_lan.send_magic_packet
+    data:
+      broadcast_address: 192.168.0.255
+      broadcast_port: 9
+      mac: "70:85:C2:D8:83:08"
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: "on"
+  - entity_id: switch.kitchen_plug
+    service: switch.turn_on

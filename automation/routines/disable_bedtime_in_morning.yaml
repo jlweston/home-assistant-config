@@ -1,0 +1,12 @@
+alias: Turn off bedtime when phone unplugged from AC
+trigger:
+  - entity_id: sensor.jamie_s_phone_charger_type
+    platform: state
+    from: "ac"
+condition:
+  - after: 06:00:00
+    condition: time
+action:
+  - data: {}
+    entity_id: input_boolean.bedtime
+    service: input_boolean.turn_off

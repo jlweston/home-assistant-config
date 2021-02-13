@@ -1,0 +1,10 @@
+alias: NeoPixel - turn off when front door opened
+description: 'Clears any doorbell notifications'
+trigger:
+- entity_id: input_boolean.someone_at_door
+  platform: state
+  to: 'off'
+condition: []
+action:
+  - service: light.turn_off
+    entity_id: light.wled_2

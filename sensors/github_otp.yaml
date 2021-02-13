@@ -1,0 +1,2 @@
+platform: otp
+token: !secret github_otp_token

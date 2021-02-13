@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  washing_machine_power:
+    friendly_name: "Washing machine power"
+    unit_of_measurement: W
+    value_template: "{{ (states('sensor.washing_machine_socket_power')|int) | default(0, true) }}"
