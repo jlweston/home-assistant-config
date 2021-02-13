@@ -13,6 +13,7 @@ www
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+google_service_account.json
 
 # other files to ignore
 home-assistant_v2.db
@@ -20,3 +21,5 @@ home-assistant_v2.db-wal
 home-assistant_v2.db-shm
 home-assistant.log
 .HA_VERSION
+
+*.yaml.bak
